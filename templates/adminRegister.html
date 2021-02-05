@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+{% load static %}
+{% block content %}
+<h1>new admin page</h1>
+<div class="row ml-5 mt-5  mr-1">
+    <a href="{% url 'index' %}">Dashboard</a>
+    <div class="col-md-7 ">
+       <div class="card card-body">
+        <form action="" method="POST">
+            {% csrf_token %}
+           
+            <h3 class="text-center">Register</h3>
+            {{form.errors}}
+            {% for message in messages %}
+            {{message}}
+            {% endfor %}
+            <hr>
+            <p>Username :</p>
+            {{form.username}}
+            <hr>
+            <p>First_Name :</p>
+            {{form.first_name}}
+            <hr>
+            <p>Last_Name :</p>
+            {{form.last_name}}
+            <hr>
+            <p>Email :</p>
+            {{form.email}}
+            <hr>
+            <p>Password :</p>
+            {{form.password1}}
+            <hr>
+            <p>Confirm Password :</p>
+            {{form.password2}}
+            <hr>
+            <input class="btn btn-outline-primary btn-sm btn-block" type="submit"  value="Create Admin">
+            <br>
+            
+            
+        </form>
+    </div>
+</div>
+</div>
+
+
+{% endblock %}

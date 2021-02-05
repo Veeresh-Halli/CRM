@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="card card-body ml-2 mt-3 mr-2">
+    
+    <form action="{% url 'delete_order' order.id %}" method="POST">
+        {% csrf_token %}
+        <p>Are you sue want to delete "{{order.product.name}}"?</p>
+        <a href="{% url 'index' %}">Cancel</a>
+        <input type="submit" name="Yes" class="btn btn-outline-danger btn-sm">
+    </form>
+</div>
+
+
+{% endblock %}

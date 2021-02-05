@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+{% if request.user.is_staff %}
+<a href="{% url 'index' %}">Back</a>
+{% else %}
+<a href="{% url 'user' %}">Back</a>
+{% endif %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <div class="row ml-5 mt-3">
+        <div class="col-md-7">
+            <div class="card card-body">
+                <h3>Customer : {{user.username}}</h3>
+                {{form}}
+            <input class="btn btn-outline-primary btn-sm btn-block" type="submit" name="submit">
+            </div>
+        </div>
+    </div>
+   
+</form>
+{% endblock %}

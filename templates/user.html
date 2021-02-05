@@ -1,0 +1,79 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="row ml-1 mr-1">
+    <div class="col-md-4 mt-2 ">
+        <div class="card card-body ">
+            <h4 >Customer : {{user.username}}</h4>
+            <hr>
+            <a href="#" class="btn btn-outline-success btn-sm btn-block">Update Profile</a>
+            <a href="#" class="btn btn-outline-danger btn-sm btn-block">Delete Profile</a>
+            <a href="{% url 'cust_create_order' user.id %}" class="btn btn-outline-primary btn-sm btn-block">Place an order</a>
+        </div>
+    </div>
+
+    <div class="col-md-4 mt-2 ">
+        <div class="card card-body ">
+            <h4 >Contact Information :</h4>
+            <hr>
+            <p>Email : {{user.email}}</p>
+            <p>Phone : {{user.phone}}</p>
+            <p>Your IP : {{ip}} </p>
+            <p>Todays Login : {{ct}} </p>
+        </div>
+    </div>
+
+    <div class="col-md-4 mt-2">
+        <div class="card card-body ">
+            <h4 >Total Orders :</h4>
+            <hr>
+            <p>{{total_orders}}</p>
+        </div>
+    </div>
+</div>
+
+<div class="row ml-1 mr-1 mt-3">
+    <div class="col-md-12">
+        <div class="card card-body">
+            <form method="get">
+                <button class="btn btn-primary">Search</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row ml-1 mr-1 mt-3">
+    <div class="col-md">
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>Date Ordered</th>
+                    <th>Status</th>
+                   
+                   
+                 
+
+                </tr>
+                {% for order in orders %}
+               <tr>
+                
+               <td>{{order.product}}</td>
+               <td>{{order.product.category}}</td>
+               <td>{{order.date_created}}</td>
+               <td>{{order.status}}</td>
+              
+                </tr>
+                {% endfor %}
+               
+            </table>
+          
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
